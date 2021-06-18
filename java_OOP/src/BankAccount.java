@@ -2,6 +2,29 @@ public class BankAccount {
     private int balance;
     private Person owner;
 
+    public BankAccount(int pBalance) {
+        if (pBalance < 0) {
+            balance = 0;
+        } else {
+            balance = pBalance;
+        }
+    }
+
+    public BankAccount(Person pOwner) {
+        owner = pOwner;
+        balance = 0;
+    }
+
+    public BankAccount(int pBalance, Person pOwner) {
+        if (pBalance < 0) {
+            balance = 0;
+        } else {
+            balance = pBalance;
+        }
+
+        owner = pOwner;
+    }
+
     public void setBalance(int newBalance) {
         balance = newBalance;
     }
@@ -48,4 +71,28 @@ public class BankAccount {
         return true;
     }
 
+    public boolean transfer(BankAccount to, int amount) {
+        // insert code here
+        boolean success;
+
+        if (amount < 0 || amount > balance) {
+            success = false;
+        } else {
+            balance -= amount;
+            to.balance += amount;
+            success = true;
+        }
+
+        System.out.println(success + " - from: " + owner.getName()
+                + ", to: " + to.owner.getName()
+                + ", amount: " + amount
+                + ", balance: " + balance);
+        return success;
+    }
+
+    public boolean transfer(Person to, int amount) {
+        return transfer(to.getAccount(), amount);
+    }
 }
+
+
