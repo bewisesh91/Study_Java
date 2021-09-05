@@ -1,0 +1,37 @@
+package chapter8;
+
+public class AdjCustomer {
+    protected int customerID;
+    protected String customerName;
+    protected String customerGrade;
+    int bonusPoint;
+    double bonusRatio;
+
+    public AdjCustomer() {
+        initCustomer();
+    }
+
+    public AdjCustomer(int customerID, String customerName) {
+        this.customerID = customerID;
+        this.customerName = customerName;
+        initCustomer();
+    }
+
+    private void initCustomer() {
+        customerGrade = "Silver";
+        bonusRatio = 0.01;
+    }
+
+    public int calcPrice(int price) {
+        bonusPoint += price * bonusRatio;
+        return price;
+    }
+
+    public String showCustomerInfo() {
+        return customerName + " 님의 등급은 " + customerGrade + "이며, 보너스 포인트는 " + bonusPoint + "입니다.";
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+}

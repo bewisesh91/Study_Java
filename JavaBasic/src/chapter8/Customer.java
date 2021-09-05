@@ -7,9 +7,18 @@ public class Customer {
     int bonusPoint;
     double bonusRatio;
 
-    public Customer(){
+    // CustomerTest2를 위한 주석처리
+//    public Customer(){
+//        customerGrade = "Silver";
+//        bonusRatio = 0.01;
+//    }
+
+    public Customer(int customerID, String customerName){
+        this.customerID = customerID;
+        this.customerName = customerName;
         customerGrade = "Silver";
         bonusRatio = 0.01;
+        System.out.println("Customer(int, String) 생성자 호출");
     }
 
     public int getCustomerID() {
